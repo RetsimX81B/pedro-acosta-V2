@@ -6,13 +6,12 @@ body {
 }
 
 header {
-    background: #690505; /* GasGas Red */
-    color: white;
-    padding: 20px;
-    text-align: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
 }
-
+.back-img {
+    width: 1270px;
+    height: 150px;
+}
 nav {
     background: rgba(0, 0, 0, 0.85); /* Black background */
     color: white;
