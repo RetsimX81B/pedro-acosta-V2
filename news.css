@@ -1,4 +1,7 @@
-
+.body{
+    text-align: center;
+    align-items: center;
+}
 .sidebar {
     position: fixed;
     top: 0;
