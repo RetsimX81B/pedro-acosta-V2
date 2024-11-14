@@ -18,7 +18,7 @@ nav {
     color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow effect */
     width: 100%;
-    height: 21px;
+    height: fit-content;
 }
 
 nav ul {
@@ -48,7 +48,7 @@ nav ul li a:hover {
 
 main {
     padding: 20px;
-    max-width: 800px; /* Max width for content */
+    max-width: 900px; /* Max width for content */
     margin: auto; /* Center the main content */
 }
 
@@ -96,7 +96,7 @@ footer {
 }
 
 .bouton:hover{
-    animation: fade 400ms forwards; /*ptite animation pr le boutton*/
+    animation: fade 400ms forwards; /*petite animation pour le boutton*/
 }
 
 @keyframes fade {
