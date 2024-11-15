@@ -95,7 +95,7 @@ footer {
     border-style: solid;
 }
 
-.bouton:hover{
+.bouton:hover:active{
     animation: fade 400ms forwards; /*petite animation pour le boutton*/
 }
 

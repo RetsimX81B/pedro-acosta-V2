@@ -41,7 +41,7 @@ main{
 }
 
 .news-container {
-    margin-left: 220px; /* Espace pour le menu latéral */
+    align-items: center; /* Espace pour le menu latéral */
     padding: 20px;
     flex-grow: 1; /* Permet à la zone de nouvelles de prendre tout l'espace restant */
 }
