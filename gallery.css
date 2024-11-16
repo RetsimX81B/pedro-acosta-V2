@@ -27,7 +27,11 @@ figure {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
     
+}
+figure:hover{
+    transform: scale(2);
 }
 
 img {
