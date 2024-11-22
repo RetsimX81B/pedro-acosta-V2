@@ -6,7 +6,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .menu-button {
-    position: absolute;
+    position: fixed;
     top: 10px;
     left: 10px;
     background-color: #333;
@@ -17,7 +17,7 @@
 }
 
 .menu {
-    position: absolute;
+    position: fixed;
     top: 50px;
     left: 0;
     background-color: #333;
