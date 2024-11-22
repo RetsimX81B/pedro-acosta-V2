@@ -50,6 +50,7 @@ main {
     padding: 20px;
     max-width: 900px; /* Max width for content */
     margin: auto; /* Center the main content */
+    display: block;
 }
 
 section {
