@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Acosta Fan Site</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="commentaire.css">
+</head>
+<article>
+    <header>
+        <img src="./pictures/img-pedro.jpg" class="back-img"> 
+    </header>
+    <nav>
+        <ul>
+            <li><a href="about.html">About Pedro Acosta</a></li>
+            <li><a href="index.html">Back</a></li>
+            <li><a href="career.html">Latest results</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="news.html">Latest News</a></li>
+        </ul>
+    </nav>
+</article>
+<article class="news-item">
+<div class="comm">
+    <div class="main-comment-div">
+        <h3>Latest comments:</h3>
+        <div class="comment">
+
+            <div>
+                <img class="profile-image" id="profile-imagea"
+                    src="https://imgs.search.brave.com/UV-1RWFf-UhxdYFC9GLszWqPy6K2zDEdcVtOaAcXcrQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4LzExLzU0LzMz/LzM2MF9GXzgxMTU0/MzMzMF9LZk5ZdWtw/RFVRZG1YSUt6Y005/Z2tLOU12dHdPTzhC/ai5qcGc"
+                    alt="">
+            </div>
+
+            <div class="comment-content">
+                <div class="post-details">
+                    <h4 id="username-h1"></h4>
+                    <time datetime="16:54" id="timestamp"></time>
+                </div>
+                <button id="request-button" style="display: none;"></button>
+
+
+                <p id="comment-p"></p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="form">
+        <input type="text" name="namme" id="name-input-field" placeholder="username" class="com">
+        <br>
+        <textarea name="comment" required id="commment-input-field"
+            placeholder="Place your comment here" class="com"></textarea>
+            <br>
+        <button id="submit-button" class="sub">Sumbit</button>
+        <p id="comment-info"></p>
+    </div>
+
+</article>
+<div><button class="bouton">▲</button></div>
+<script src="commentaire.js"></script>
+<script src="main.js"></script>
+</body>
+
+</html>
