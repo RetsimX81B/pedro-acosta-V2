@@ -61,3 +61,45 @@ main{
 .news-item p {
     margin: 5px 0;
 }
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+    align-items: center;
+}
+
+.main-comment-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment {
+    display: flex;
+}
+
+.comment-content {
+    width: 550px;
+    text-align: left;
+}
+
+.post-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.profile-image {
+    border-radius: 100%;
+    width: 55px;
+    margin-right: 15px;
+}
+
+#username-h1 {
+    margin: 0;
+}
+
+#timestamp {
+    margin-left: 15px;
+}
