@@ -92,7 +92,7 @@ requestButton.addEventListener("click", () => {
     username.innerHTML = response["author"];
     console.log(response["author"])
     comment.innerHTML = response["comment"];
-    timestampTxt.innerHTML = GetTime(timestamp)
+    timestampTxt.innerHTML = response["timestamp"];
     //profilePicture.src = response[""];
     console.log(GetTime(timestamp));
 
