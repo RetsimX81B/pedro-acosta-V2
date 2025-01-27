@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .comments-container {
+        max-height: 150px;
+        /* Adjust height as needed */
+        overflow-y: auto;
+        /* Enable vertical scrolling */
+        border: 1px solid #ccc;
+        /* Optional: Add a border for visibility */
+        padding: 10px;
+        /* Optional: Add padding inside the container */
+        margin: 10px auto;
+        /* Optional: Center the container */
+        width: 80%;
+        /* Optional: Set a width for the container */
+        background-color: #f9f9f9;
+        /* Optional: Background color */
+      }
+
+      .comment {
+        display: flex;
+        gap: 10px;
+        /* Space between the image and the content */
+        margin-bottom: 15px;
+        /* Space between comments */
+      }
+
+      .profile-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        /* Makes the image circular */
+        object-fit: cover;
+        /* Ensures the image fits within the circle */
+      }
+
+      .comment-content {
+        flex: 1;
+      }
+
+      .post-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #username-h1 {
+        margin: 0;
+      }
+
+      #comment-p {
+        margin: 5px 0 0;
+        color: #555;
+        /* Optional: Text color */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="comments-container" id="comments-container"></div>
+  </body>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+    import {
+      getDatabase,
+      ref,
+      onValue,
+      set,
+    } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAQxAm3LZjTREygOWuX1h5voag5rvfMjaU",
+      authDomain: "pedroacostafan.firebaseapp.com",
+      databaseURL:
+        "https://pedroacostafan-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "pedroacostafan",
+      storageBucket: "pedroacostafan.firebasestorage.app",
+      messagingSenderId: "636133728649",
+      appId: "1:636133728649:web:1801fb8809015b7f2c0158",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+
+    async function getdata() {
+      onValue(ref(db, "news/"), (snapshot) => {
+        const data = snapshot.val();
+        const commentsContainer = document.getElementById("comments-container");
+        RenderComments(data, commentsContainer);
+      });
+    }
+
+    function RenderComments(data, commentsContainer) {
+      const dynamicComments = Object.entries(data).map(([key, element], i) => ({
+        username: element.author,
+        timestamp: element.timestamp,
+        comment: element.comment || `This is a sample comment for user ${i}.`,
+        profileImage: `https://imgs.search.brave.com/UV-1RWFf-UhxdYFC9GLszWqPy6K2zDEdcVtOaAcXcrQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4LzExLzU0LzMz/LzM2MF9GXzgxMTU0/MzMzMF9LZk5ZdWtw/RFVRZG1YSUt6Y005/Z2tLOU12dHdPTzhC/ai5qcGc`,
+      }));
+      console.log(dynamicComments);
+
+      // Render comments
+      dynamicComments.forEach((comment, index) => {
+        const commentHTML = `
+        <div class="comment">
+            <div>
+                <img class="profile-image" id="profile-image-${index}"
+                     src="${comment.profileImage}" alt="User ${index}">
+            </div>
+            <div class="comment-content">
+                <div class="post-details">
+                    <h4 id="username-h1-${index}">${comment.username}</h4>
+                    <time id="timestamp-${index}">${comment.timestamp}</time>
+                </div>
+                <button id="request-button-${index}" style="display: none;">Request</button>
+                <p id="comment-p-${index}">${comment.comment}</p>
+            </div>
+        </div>`;
+
+        // Append the comment to the container
+        commentsContainer.innerHTML += commentHTML;
+      });
+    }
+
+    function uuidv4() {
+      return "xxxxxxxx".replace(/[xy]/g, function (c) {
+        const r = (Math.random() * 16) | 0,
+          v = c == "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      });
+    }
+
+    function writeUserData(username, timestamp, comment) {
+      const db = getDatabase();
+      const random_uuid = uuidv4();
+      set(ref(db, "news/" + random_uuid), {
+        author: username,
+        timestamp: timestamp,
+        comment: comment,
+      });
+      getdata();
+    }
+
+    getdata();
+    writeUserData("123", "2022-01-01", "Hello, world!");
+
+    // Generate a random UUID
+    /*     const random_uuid = uuidv4();
+
+    // Print the UUID
+    console.log(random_uuid); */
+  </script>
+</html>
