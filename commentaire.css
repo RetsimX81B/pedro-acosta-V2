@@ -37,6 +37,7 @@
 .main-comment-div {
     display: flex;
     flex-direction: column;
+    justify-content: left;
 }
 
 .comment {
@@ -79,3 +80,49 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     align-items: center;
 }
+
+#comment {
+    max-height: 150px;
+    /* Adjust height as needed */
+    overflow-x: auto;
+    /* Enable vertical scrolling */
+    border: 1px solid #ccc;
+    /* Optional: Add a border for visibility */
+    padding: 10px;
+    /* Optional: Add padding inside the container */
+    margin-left: 5px;
+    /* Optional: Center the container */
+    width: 430px;
+    /* Optional: Set a width for the container */
+    background-color: #f9f9f9;
+    /* Optional: Background color */
+  }
+
+  .comment {
+    display: flex;
+    flex-direction: column  ;
+    gap: 10px;
+    /* Space between the image and the content */
+    margin-bottom: 15px;
+    /* Space between comments */
+  }
+
+  .comment-content {
+    width: 100%;
+  }
+
+  .post-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #username-h1 {
+    margin: 0;
+  }
+
+  #comment-p {
+    margin: 5px 0 0;
+    color: #555;
+    /* Optional: Text color */
+  }
