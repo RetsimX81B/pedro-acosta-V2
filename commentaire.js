@@ -1,8 +1,3 @@
-function toggleMenu() {
-  const menu = document.getElementById("menu");
-  menu.style.display = menu.style.display === "block" ? "none" : "block";
-}
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
 import {
@@ -23,6 +18,21 @@ const firebaseConfig = {
   appId: "1:636133728649:web:1801fb8809015b7f2c0158",
 };
 
+const pageName = "news";
+
+const requestButton = document.getElementById("request-button");
+
+const username = document.getElementById("username-h1");
+const comment = document.getElementById("comment-p");
+const timestampTxt = document.getElementById("timestamp");
+const profilePicture = document.getElementById("profile-image");
+
+const submitForm = document.getElementById("submit-button");
+const usernameForm = document.getElementById("name-input-field");
+const contentForm = document.getElementById("commment-input-field");
+const commentInfo = document.getElementById("comment-info");
+
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
@@ -30,7 +40,7 @@ const db = getDatabase();
 async function getdata() {
   onValue(ref(db, "news/"), (snapshot) => {
     const data = snapshot.val();
-    const commentsContainer = document.getElementById("comments-container");
+    const commentsContainer = document.getElementById("comment");
     RenderComments(data, commentsContainer);
   });
 }
@@ -47,24 +57,44 @@ function RenderComments(data, commentsContainer) {
   // Render comments
   dynamicComments.forEach((comment, index) => {
     const commentHTML = `
-        <div class="comment">
-            <div>
-                <img class="profile-image" id="profile-image-${index}"
-                     src="${comment.profileImage}" alt="User ${index}">
+    <div class="comment">
+        <div>
+            <img class="profile-image" id="profile-image-${index}"
+                 src="${comment.profileImage}" alt="User ${index}">
+        </div>
+        <div class="comment-content">
+            <div class="post-details">
+                <h4 id="username-h1-${index}">${comment.username}</h4>
+                <time id="timestamp-${index}">${comment.timestamp}</time>
             </div>
-            <div class="comment-content">
-                <div class="post-details">
-                    <h4 id="username-h1-${index}">${comment.username}</h4>
-                    <time id="timestamp-${index}">${comment.timestamp}</time>
-                </div>
-                <button id="request-button-${index}" style="display: none;">Request</button>
-                <p id="comment-p-${index}">${comment.comment}</p>
-            </div>
-        </div>`;
+            <button id="request-button-${index}" style="display: none;">Request</button>
+            <p id="comment-p-${index}">${comment.comment}</p>
+        </div>
+    </div>`;
 
     // Append the comment to the container
     commentsContainer.innerHTML += commentHTML;
   });
+}
+
+function GetTime(timestamp) {
+  let unix_timestamp = timestamp;
+
+  // Create a new JavaScript Date object based on the timestamp
+  // multiplied by 1000 so that the argument is in milliseconds, not seconds
+  var date = new Date(unix_timestamp * 1000);
+
+  // Hours part from the timestamp
+  var hours = date.getHours();
+
+  // Minutes part from the timestamp
+  var minutes = "0" + date.getMinutes();
+
+  // Seconds part from the timestamp
+
+  // Will display time in 10:30:23 format
+  var formattedTime = hours + ":" + minutes.substr(-2);
+  return formattedTime;
 }
 
 function uuidv4() {
@@ -86,65 +116,26 @@ function writeUserData(username, timestamp, comment) {
   getdata();
 }
 
-const pageName = "news";
+getdata();
 
-const requestButton = document.getElementById("request-button");
-
-const username = document.getElementById("username-h1");
-const comment = document.getElementById("comment-p");
-const timestampTxt = document.getElementById("timestamp");
-const profilePicture = document.getElementById("profile-image");
-
-const submitForm = document.getElementById("submit-button");
-const usernameForm = document.getElementById("name-input-field");
-const contentForm = document.getElementById("commment-input-field");
-const commentInfo = document.getElementById("comment-info");
-
-submitForm.addEventListener("click", () => {
-  if (!contentForm.value == "") {
-    if (!usernameForm.value == "") {
-      commentInfo.innerHTML = "";
-      writeUserData(usernameForm, GetTime(timestamp), contentForm);
-    } else {
-      usernameForm.value = "Anonym User";
-      submitForm.click();
+document.getElementById("submit-button").addEventListener("click", ()=>{
+  if (usernameForm != ""){
+    if(contentForm != ""){
+      console.log(true)
+      writeUserData(usernameForm.value, GetTime(Math.floor(new Date().getTime() / 1000.0)), contentForm.value)
     }
   } else {
-    commentInfo.innerHTML = "Section commentaire vide";
+    console.log(false)
+    usernameForm.innerText("Anonym User")
+    writeUserData(usernameForm.value, GetTime(Math.floor(new Date().getTime() / 1000.0)), contentForm.value) 
   }
-});
+})
 
-const timestamp = Math.floor(new Date().getTime() / 1000.0);
-console.warn(timestamp);
 
-requestButton.addEventListener("click", () => {
-  /* response = response["record"]["news"]
-    console.log(response);
-    username.innerHTML = response["author"];
-    console.log(response["author"])
-    comment.innerHTML = response["comment"];
-    timestampTxt.innerHTML = response["timestamp"];
-    //profilePicture.src = response[""];
-    console.log(GetTime(timestamp)); */
-  getdata();
-});
+//writeUserData("123", "2022-01-01", "Hello, world!");
 
-function GetTime(timestamp) {
-  let unix_timestamp = timestamp;
+// Generate a random UUID
+/*     const random_uuid = uuidv4();
 
-  // Create a new JavaScript Date object based on the timestamp
-  // multiplied by 1000 so that the argument is in milliseconds, not seconds
-  var date = new Date(unix_timestamp * 1000);
-
-  // Hours part from the timestamp
-  var hours = date.getHours();
-
-  // Minutes part from the timestamp
-  var minutes = "0" + date.getMinutes();
-
-  // Seconds part from the timestamp
-
-  // Will display time in 10:30:23 format
-  var formattedTime = hours + ":" + minutes.substr(-2);
-  return formattedTime;
-}
+// Print the UUID
+console.log(random_uuid); */
