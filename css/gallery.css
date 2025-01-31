@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    
+}
+h1 {
+    margin: 0;
+}
+h2{
+    margin-left: 90%;
+}
+
+main {
+    padding: 20px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 60%;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+   
+   
+}
+
+figure {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    
+}
+figure:hover{
+    transform: scale(1.5);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+figcaption {
+    padding: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.menu-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.menu {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    background-color: #333;
+    width: 200px;
+    padding: 20px;
+    display: none;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    margin-bottom: 10px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: #ccc;
+}

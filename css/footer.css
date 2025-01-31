@@ -1,0 +1,125 @@
+footer {
+   
+    padding: 10px;
+    background:  rgba(0, 0, 0, 0.85); /* Black background */
+    color: white;
+    position: relative;
+    bottom: 0;
+    margin: 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+.com {
+  
+    width: 50%; 
+    padding: 10px; 
+    margin: 10px 0; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    font-size: 16px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    transition: border-color 0.3s, box-shadow 0.3s; 
+}
+.com:focus {
+    border-color: #333; 
+    box-shadow: 0 0 5px rgba(51, 51, 51, 0.5); 
+    outline: none; 
+}
+.sub{
+    background-color: #333; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s, transform 0.3s; 
+    display: inline-block;
+     
+}
+
+.sub:hover{
+    background-color: #444; 
+    transform: translateY(-2px); 
+    background-color: #222; 
+    transform: translateY(0); 
+}
+.main-comment-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment {
+    display: flex;
+}
+
+.comment-content {
+    width: 550px;
+    text-align: left;
+}
+
+.post-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.profile-image {
+    border-radius: 100%;
+    width: 55px;
+    margin-right: 15px;
+}
+
+#username-h1 {
+    margin: 0;
+}
+
+#timestamp {
+    margin-left: 15px;
+}
+.news-items {
+    padding: 20px;
+    max-width: 85%;
+    margin: auto;
+    display: block;
+    background-color: #333;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    align-items: center;
+}
+
+.bouton{
+    height: 50px;
+    width: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;    
+    z-index: 20;
+    border-style: solid;
+}
+
+.bouton:hover:active{
+    animation: fade 400ms forwards; 
+}
+
+@keyframes fade {
+
+    0% {
+        background-color: white
+    }
+
+    100% {
+        background-color: rgb(207, 207, 207);
+    }
+}
+.thanks{
+   margin-left: 40%;
+  
+}
