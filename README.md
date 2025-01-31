@@ -28,6 +28,7 @@ Clonez ce repository et ouvrez le fichier `index.html` dans votre navigateur.
 ```bash
 git clone https://github.com/retsimx81b/pedro-acosta-V2.git
 cd pedro-acosta-V2
+```
 
 Ou cliquer sur ce lien :
 
